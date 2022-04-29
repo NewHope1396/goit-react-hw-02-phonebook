@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid'
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
+import { Container, ContactsSection } from './App.styled';
 
 export class App extends Component {
 
@@ -22,7 +23,7 @@ export class App extends Component {
     })
 
     if(isDublicate){
-      alert(`${values.name} is already in fckn contacts`);
+      alert(`${values.name} is already in contacts`);
       return 
     }
 
@@ -52,13 +53,15 @@ export class App extends Component {
     const filteredContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(normalizedFilter))
 
     return(
-    <div>
+    <Container>
       <h1>Phonebook</h1>
       <ContactForm onFormSubmit={this.onFormSubmit}></ContactForm>
 
       <h2>Contacts</h2>
-      <Filter onFilterChange={this.onFilterChange} value={filter}></Filter>
-      <ContactList filteredContacts={filteredContacts} onDeleteBtbClick={this.onDeleteBtbClick}></ContactList>
-    </div>
+      <ContactsSection>
+        <Filter onFilterChange={this.onFilterChange} value={filter}></Filter>
+        <ContactList filteredContacts={filteredContacts} onDeleteBtbClick={this.onDeleteBtbClick}></ContactList>
+      </ContactsSection>
+    </Container>
   )};
 };
