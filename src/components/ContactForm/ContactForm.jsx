@@ -1,4 +1,4 @@
-import { Formik, Field } from 'formik';
+import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
 import { StyledForm, Input, Label, Button } from './ContactForm.styled';
 import PropTypes from 'prop-types';
